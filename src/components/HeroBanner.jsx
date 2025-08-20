@@ -1,16 +1,18 @@
 import image from "../assets/img/heroBanner.jfif";
+import { forwardRef } from "react";
 
-function HeroBanner() {
+const HeroBanner = forwardRef(({ refs, onScroll }, ref) => {
   return (
     <div
+      ref={ref}
       className="relative h-screen w-full bg-cover bg-center z-10 py-7"
       style={{ backgroundImage: `url(${image})` }}
     >
-      <div className="absolute inset-0 bg-black/60"></div>
+      <div className="absolute inset-0 bg-blue-800/40"></div>
       <div className="relative z-10 flex h-full flex-col justify-around items-center text-center text-white p-4 md:p-8">
         <div className="max-w-3xl">
-          <h1 className="text-3xl md:text-4xl lg:text-4xl font-semibold">
-            BMImports - Importadora & Distribuidora
+          <h1 className="text-3xl md:text-4xl lg:text-4xl font-semibold ">
+            <span className="text-red-700">BM</span><span className="text-blue-900">Imports</span> - Importadora & Distribuidora
           </h1>
           <p className="mt-4 text-lg text-gray-300 md:text-xl lg:text-2xl">
             Excelência em importação e distribuição de produtos para todo o
@@ -24,6 +26,6 @@ function HeroBanner() {
       </div>
     </div>
   );
-}
+});
 
 export default HeroBanner;

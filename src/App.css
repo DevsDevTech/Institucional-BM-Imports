@@ -1,5 +1,8 @@
 @import 'tailwindcss';
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
 
 body{
-  background-color: oklch(98.4% 0.003 247.858);
+  background-color: oklch(96.018% 0.01946 252.986)
 }

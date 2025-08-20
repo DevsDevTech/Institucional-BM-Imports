@@ -1,1 +1,8 @@
-@import 'tailwindcss'
+@import 'tailwindcss';
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+.section-scroll-margin {
+  scroll-margin-top: 90px;
+}
