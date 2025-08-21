@@ -4,12 +4,12 @@ function OurSegments() {
   return (
     <div
       id="default-carousel"
-      className="relative w-full flex flex-col z-10"
+      className="relative w-full flex flex-col z-10 text-white"
       data-carousel="slide"
     >
-      <div className="text-center py-8 max-md:px-4 md:px-10 lg:px-15 xl:px-22 2xl:px-32">
-        <h2 className="font-bold text-xl lg:text-2xl">Segmentos de atuação</h2>
-        <p className="text-lg lg:text-xl">
+      <div className="text-center flex flex-col gap-2 py-8 max-md:px-4 md:px-10 lg:px-15 xl:px-22 2xl:px-32">
+        <h2 className="font-bold max-lg:text-3xl lg:text-4xl">Segmentos de atuação</h2>
+        <p className="text-xl lg:text-2xl">
           Atuamos em diferentes setores, oferecendo soluções completas:
         </p>
       </div>

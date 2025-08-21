@@ -6,7 +6,7 @@ function Policy() {
     const nav = useNavigate()
 
   return (
-    <div>
+    <div className="bg-white">
       <div className="fixed p-4 flex justify-between bg-white w-full shadow-md">
         <h1 className="text-3xl font-semibold">Política de Privacidade</h1>
         <button onClick={()=>nav('/')} className="cursor-pointer">

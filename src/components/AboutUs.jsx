@@ -8,14 +8,14 @@ function AboutUs() {
           <img src={image} alt="" className="relative md:-right-10" />
         </div>
         <div className="bg-white max-md:p-4 flex flex-col gap-4 relative md:-left-10 md:w-4/5 md:py-20 md:px-10 z-10 lg:py-[100px]">
-          <h2 className="text-3xl font-bold text-blue-800">Quem somos</h2>
-          <p className="max-md:text-lg lg:text-xl">
+          <h2 className="text-4xl font-bold text-[#00003d]">Quem somos</h2>
+          <p className="max-lg:text-xl lg:text-2xl">
             A BMImports é uma importadora e distribuidora de produtos de
             diferentes segmentos, com atuação nacional. Trabalhamos com
             fornecedores internacionais renomados, entregando produtos já
             nacionalizados e com garantia no Brasil.
           </p>
-          <p className="max-md:text-lg lg:text-xl">
+          <p className="max-lg:text-xl lg:text-2xl">
             Nosso compromisso é oferecer qualidade, segurança e confiança em
             cada negociação, sempre prezando por uma relação transparente e de
             longo prazo com clientes e parceiros.

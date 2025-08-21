@@ -24,14 +24,14 @@ function Home() {
         onScroll={handleScroll}
         refs={{ aboutRef, segmentsRef, homeRef }}
       />
-      <div className="flex flex-col space-y-50">
-        <div ref={homeRef}>
+      <div className="flex flex-col space-y-30">
+        <div ref={homeRef} >
           <HeroBanner
             onScroll={handleScroll}
             refs={{ aboutRef, segmentsRef }}
           />
         </div>
-        <div ref={aboutRef}  className="section-scroll-margin">
+        <div ref={aboutRef}  className="section-scroll-margin pb-25">
           <AboutUs refs={{ homeRef }} />
         </div>
         <OurFocus />

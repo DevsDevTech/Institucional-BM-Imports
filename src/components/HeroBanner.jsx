@@ -12,13 +12,13 @@ const HeroBanner = forwardRef(({ refs, onScroll }, ref) => {
       <div className="relative z-10 flex h-full flex-col justify-around items-center text-center text-white p-4 md:p-8">
         <div className="max-w-3xl">
           <h1 className="text-3xl md:text-4xl lg:text-4xl font-semibold ">
-            <span className="text-red-700">BM</span><span className="text-blue-900">Imports</span> - Importadora & Distribuidora
+            BM Imports - Importadora & Distribuidora
           </h1>
           <p className="mt-4 text-lg text-gray-300 md:text-xl lg:text-2xl">
             Excelência em importação e distribuição de produtos para todo o
             Brasil.
           </p>
-          <p className="mt-4 text-lg text-gray-300 md:text-xl lg:text-2xl">
+          <p className="mt-4 text-lg font-semibold text-gray-300 md:text-xl lg:text-2xl">
             Conheça nossos segmentos de atuação e descubra soluções sob medida
             para o seu negócio.
           </p>
