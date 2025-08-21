@@ -4,5 +4,5 @@
 @source "../node_modules/flowbite";
 
 body{
-  background-color: oklch(96.018% 0.01946 252.986)
+  background-color: oklch(96.018% 0.01946 252.986);
 }

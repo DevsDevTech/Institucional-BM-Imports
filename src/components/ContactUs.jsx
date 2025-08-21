@@ -25,7 +25,7 @@ function ContactUs() {
         "qABTfAelWct2Gg9of"
       )
       .then((res) => {
-        console.log("Email enviado", res.status, res.text);
+        alert("E-mail enviado!");
         setName("");
         setEmail("");
         setMessage("");

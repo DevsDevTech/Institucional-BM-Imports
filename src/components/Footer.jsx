@@ -13,8 +13,8 @@ function Footer({ onScroll, refs }) {
               </div>
             </div>
           </div>
-          <div className="flex md:flex-row gap-10 px-4">
-            <div className="flex flex-col gap-3 md:w-1/2">
+          <div className="flex max-md:flex-col md:flex-row gap-10 px-4">
+            <div className="flex flex-col gap-3 md:w-1/3">
               <p className="text-xl font-semibold">Endereço</p>
               <div>
                 <p className="text-md text-gray-300">
@@ -32,7 +32,18 @@ function Footer({ onScroll, refs }) {
                 </a>
               </p>
             </div>
-            <div className="flex flex-col gap-4 md:w-1/2">
+            <div className="flex flex-col gap-3 md:w-1/3">
+              <p className="text-xl font-semibold">Loja física</p>
+              <div>
+                <p className="text-md text-gray-300">
+                  R. Adolfo André, 497 - Estancia Parque de Atibaia
+                </p>
+                <p className="text-md text-gray-300">
+                  Downtown, Atibaia - SP, 12940-280
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-4 md:w-1/3">
               <p className="text-xl font-semibold">Quem somos</p>
               <p className="text-md text-gray-300">
                 <span className="font-bold">
