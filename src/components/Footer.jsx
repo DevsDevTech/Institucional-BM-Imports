@@ -81,7 +81,7 @@ function Footer({ onScroll, refs }) {
       <hr className="text-gray-300" />
       <div className="text-sm p-4 text-gray-700 flex justify-center items-center lg:py-10 lg:px-35">
         <p className="text-center">
-          © 2025 BM Imports. DevTech Software. Todos os direitos reservados.
+          © 2025 BM Imports. DevTech Softwares. Todos os direitos reservados.
         </p>
       </div>
     </div>
