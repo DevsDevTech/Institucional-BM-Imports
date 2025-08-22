@@ -102,18 +102,6 @@ function OurSegments() {
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
           <img
-            src={hot1}
-            className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover h-full"
-            alt="..."
-          />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-            <p className="text-white text-3xl font-bold p-4">
-              Hotelaria
-            </p>
-          </div>
-        </div>
-        <div className="hidden duration-700 ease-in-out" data-carousel-item>
-          <img
             src={hot2}
             className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover h-full"
             alt="..."
@@ -126,7 +114,7 @@ function OurSegments() {
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
           <img
-            src={hot3}
+            src={hot1}
             className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover h-full"
             alt="..."
           />
@@ -139,6 +127,18 @@ function OurSegments() {
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
           <img
             src={hot4}
+            className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover h-full"
+            alt="..."
+          />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+            <p className="text-white text-3xl font-bold p-4">
+              Hotelaria
+            </p>
+          </div>
+        </div>
+        <div className="hidden duration-700 ease-in-out" data-carousel-item>
+          <img
+            src={hot3}
             className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover h-full"
             alt="..."
           />
