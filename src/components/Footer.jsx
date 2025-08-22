@@ -24,11 +24,11 @@ function Footer({ onScroll, refs }) {
               </div>
               <p className="text-sm text-gray-600 cursor-pointer underline hover:text-gray-950">
                 <a
-                  href="mailto:comercial@bmimports.com.br"
+                  href="mailto:contato@bmimports.com.br"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  comercial@bmimports.com.br
+                  contato@bmimports.com.br
                 </a>
               </p>
             </div>

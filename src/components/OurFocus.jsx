@@ -2,7 +2,7 @@ import { Headset, ShoppingCart, DollarSign } from "lucide-react";
 
 function OurFocus() {
   return (
-    <div className="flex flex-col xl:justify-center bg-white py-40 xl:items-center overflow-auto max-lg:gap-2 lg:gap-6">
+    <div className="flex flex-col xl:justify-center text-[#00003d] bg-white py-40 xl:items-center overflow-auto max-lg:gap-2 lg:gap-6">
       <div className="flex flex-col gap-2 max-md:px-4 md:px-10 lg:px-15 xl:px-22 2xl:px-32">
         <p className="flex items-center justify-center font-bold max-lg:text-3xl lg:text-4xl">
           Nossa missão

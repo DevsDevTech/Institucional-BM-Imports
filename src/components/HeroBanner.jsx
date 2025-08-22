@@ -1,4 +1,4 @@
-import image from "../assets/img/heroBanner.jfif";
+import image from "../assets/img/fachada.jpg";
 import { forwardRef } from "react";
 
 const HeroBanner = forwardRef(({ refs, onScroll }, ref) => {
@@ -8,7 +8,7 @@ const HeroBanner = forwardRef(({ refs, onScroll }, ref) => {
       className="relative h-screen w-full bg-cover bg-center z-10 py-7"
       style={{ backgroundImage: `url(${image})` }}
     >
-      <div className="absolute inset-0 bg-blue-800/40"></div>
+      <div className="absolute inset-0 bg-blue-950/70"></div>
       <div className="relative z-10 flex h-full flex-col justify-around items-center text-center text-white p-4 md:p-8">
         <div className="max-w-3xl">
           <h1 className="text-3xl md:text-4xl lg:text-4xl font-semibold ">

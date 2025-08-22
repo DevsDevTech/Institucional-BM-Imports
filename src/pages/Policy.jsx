@@ -14,7 +14,7 @@ function Policy() {
         </button>
       </div>
 
-      <div className="pt-25 px-5 pb-5 text-justify flex flex-col gap-6 text-gray-800">
+      <div className="py-25 px-5 text-justify flex flex-col gap-6 text-gray-800">
         <p>Política de Privacidade da BM IMPORTS COMÉRCIO INTERNACIONAL LTDA</p>
         <p>
           Esta Política de Privacidade descreve como a BM IMPORTS COMÉRCIO

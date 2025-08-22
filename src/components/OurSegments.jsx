@@ -1,25 +1,33 @@
-import image from "../assets/img/heroBanner.jfif";
+import image from "../assets/img/seg1.jpg";
 
 function OurSegments() {
   return (
     <div
       id="default-carousel"
-      className="relative w-full flex flex-col z-10 text-white"
+      className="relative max-xl:w-full xl:w-7/10 2xl:w-3/5 flex flex-col z-10 text-white"
       data-carousel="slide"
     >
       <div className="text-center flex flex-col gap-2 py-8 max-md:px-4 md:px-10 lg:px-15 xl:px-22 2xl:px-32">
-        <h2 className="font-bold max-lg:text-3xl lg:text-4xl">Segmentos de atuação</h2>
+        <h2 className="font-bold max-lg:text-3xl lg:text-4xl">
+          Segmentos de atuação
+        </h2>
         <p className="text-xl lg:text-2xl">
           Atuamos em diferentes setores, oferecendo soluções completas:
         </p>
       </div>
-      <div className="relative h-[400px] overflow-hidden md:h-[600px]">
+      
+      <div className="relative h-[400px] overflow-hidden md:h-[700px]">
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
           <img
             src={image}
             className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover h-full"
             alt="..."
           />
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+            <p className="text-white text-3xl font-bold p-4">
+              Academia
+            </p>
+          </div>
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
           <img
@@ -27,6 +35,11 @@ function OurSegments() {
             className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover h-full"
             alt="..."
           />
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+            <p className="text-white text-3xl font-bold p-4">
+              Academia
+            </p>
+          </div>
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
           <img
@@ -34,6 +47,11 @@ function OurSegments() {
             className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover h-full"
             alt="..."
           />
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+            <p className="text-white text-3xl font-bold p-4">
+              Academia
+            </p>
+          </div>
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
           <img
@@ -41,6 +59,11 @@ function OurSegments() {
             className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover h-full"
             alt="..."
           />
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+            <p className="text-white text-3xl font-bold p-4">
+              Academia
+            </p>
+          </div>
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
           <img
@@ -48,6 +71,11 @@ function OurSegments() {
             className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover h-full"
             alt="..."
           />
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+            <p className="text-white text-3xl font-bold p-4">
+              Academia
+            </p>
+          </div>
         </div>
       </div>
       <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">

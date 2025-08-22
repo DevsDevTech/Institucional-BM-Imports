@@ -35,7 +35,7 @@ function Home() {
           <AboutUs refs={{ homeRef }} />
         </div>
         <OurFocus />
-        <div ref={segmentsRef} className="section-scroll-margin">
+        <div ref={segmentsRef} className="section-scroll-margin pb-30 flex justify-center items-center">
           <OurSegments  />
         </div>
         <ContactUs />
