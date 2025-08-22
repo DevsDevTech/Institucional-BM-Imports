@@ -29,10 +29,11 @@ function ContactUs() {
       };
       emailjs
         .send(
-          "service_eqftk98",
-          "template_3vshfpd",
+          import.meta.env.VITE_EMAIL_SERVICE,
+          import.meta.env.VITE_EMAIL_TEMPLATE,
           templateParams,
-          "qABTfAelWct2Gg9of"
+          import.meta.env.VITE_PUBLIC_API_KEY
+  
         )
         .then(
           (res) => {
@@ -44,7 +45,8 @@ function ContactUs() {
             setTel("");
           },
           (err) => {
-            console.log("ERRO: ", err);
+            alert("Erro ao enviar e-mail, tente novamente!");
+            console.log(err)
           }
         );
     }
