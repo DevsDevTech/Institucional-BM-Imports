@@ -1,7 +1,8 @@
 import { Menu, X } from "lucide-react";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import logo from "../assets/img/logo.png";
 import logoW from "../assets/img/logoBranca.png";
+import { useNavigate } from "react-router-dom";
 
 function Header({ onScroll, refs }) {
   const [toggle, setToggle] = useState(true);
@@ -26,6 +27,11 @@ function Header({ onScroll, refs }) {
     };
   }, [refs.homeRef]);
 
+  function handleRedirectCatalogue() {
+    console.log("redirecting");
+    // Atribua o URL, não chame como uma função
+    window.location.href = "https://catalogo.bmimports.com.br";
+  }
   return (
     <nav className="fixed w-full top-0 z-20">
       <div
@@ -105,6 +111,12 @@ function Header({ onScroll, refs }) {
             >
               Nossos segmentos
             </p>
+            <p
+              className="cursor-pointer"
+              onClick={handleRedirectCatalogue}
+            >
+              Acesse nosso catálogo
+            </p>
           </div>
         </div>
 
@@ -142,6 +154,16 @@ function Header({ onScroll, refs }) {
             onClick={() => onScroll(refs.segmentsRef)}
           >
             Nossos segmentos
+          </p>
+          <p
+            className={`cursor-pointer ${
+              headerBg
+                ? "hover:border-b-black hover:border-b-1 transition-all duration-100 ease-in-out"
+                : "hover:border-b-white hover:border-b-1 transition-all ease-in-out duration-500"
+            }`}
+            onClick={handleRedirectCatalogue}
+          >
+            Acesse nosso catálogo
           </p>
         </div>
       </div>
