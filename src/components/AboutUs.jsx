@@ -97,7 +97,7 @@ function AboutUs() {
                       }`}>
                         {stat.value}
                       </div>
-                      <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">
+                      <div className="text-sm font-medium text-slate-800 uppercase tracking-wide">
                         {stat.label}
                       </div>
                     </div>

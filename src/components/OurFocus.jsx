@@ -85,7 +85,7 @@ function OurFocus() {
           <h2 className="heading-primary mb-8">
             Missão Estratégica
           </h2>
-          <p className="text-xl leading-relaxed text-slate-600 max-w-5xl mx-auto">
+          <p className="text-xl leading-relaxed text-slate-800 max-w-5xl mx-auto">
             Nossa metodologia proprietária oferece consultoria e assessoria altamente especializada para importar e distribuir com 
             máxima segurança, reduzindo significativamente riscos operacionais e otimizando custos em cada etapa crítica do processo.
           </p>
@@ -108,13 +108,13 @@ function OurFocus() {
                     <IconComponent size={28} className="text-white" />
                   </div>
                   
-                  <h3 className={`text-lg font-bold mb-4 motion-safe ${
+                  <h3 className={`text-lg font-extrabold mb-4 motion-safe ${
                     index % 3 === 1 ? 'text-slate-800 group-hover:text-accent-red' : 'text-slate-800 group-hover:text-accent-blue'
                   }`}>
                     {item.title}
                   </h3>
                   
-                  <p className="text-slate-600 text-sm leading-relaxed flex-grow">
+                  <p className="text-slate-800 text-sm font-semibold leading-relaxed flex-grow">
                     {item.description}
                   </p>
 
