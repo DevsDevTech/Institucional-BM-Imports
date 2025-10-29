@@ -1,194 +1,285 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from "lucide-react";
 import { IMaskInput } from "react-imask";
 
 function ContactUs() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [company, setCompany] = useState("");
-  const [tel, setTel] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    company: "",
+    tel: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      name.trim() == "" ||
-      email.trim() == "" ||
-      message.trim() == "" ||
-      tel.trim() == ""
-    ) {
-      alert("Preencha todos os campos obrigatórios!");
-    } else {
-      const templateParams = {
-        from_name: name,
-        email: email,
-        message: message,
-        company: company,
-        tel: tel,
-      };
-      emailjs
-        .send(
-          import.meta.env.VITE_EMAIL_SERVICE,
-          import.meta.env.VITE_EMAIL_TEMPLATE,
-          templateParams,
-          import.meta.env.VITE_PUBLIC_API_KEY
-  
-        )
-        .then(
-          (res) => {
-            alert("E-mail enviado!");
-            setName("");
-            setEmail("");
-            setMessage("");
-            setCompany("");
-            setTel("");
-          },
-          (err) => {
-            alert("Erro ao enviar e-mail, tente novamente!");
-            console.log(err)
-          }
-        );
+    
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim() || !formData.tel.trim()) {
+      setSubmitStatus({ type: 'error', message: 'Preencha todos os campos obrigatórios!' });
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAIL_SERVICE,
+        import.meta.env.VITE_EMAIL_TEMPLATE,
+        {
+          from_name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          company: formData.company,
+          tel: formData.tel,
+        },
+        import.meta.env.VITE_PUBLIC_API_KEY
+      );
+      
+      setSubmitStatus({ type: 'success', message: 'Mensagem enviada com sucesso!' });
+      setFormData({ name: "", email: "", message: "", company: "", tel: "" });
+    } catch (error) {
+      setSubmitStatus({ type: 'error', message: 'Erro ao enviar mensagem. Tente novamente!' });
+      console.error('Email error:', error);
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus(null), 5000);
     }
   };
 
+  const contactInfo = [
+    {
+      icon: Mail,
+      title: "Email Corporativo",
+      info: "contato@bmimports.com.br",
+      link: "mailto:contato@bmimports.com.br"
+    },
+    {
+      icon: Phone,
+      title: "Telefone Direto",
+      info: "(11) 98997-2671",
+      link: "tel:+5511989972671"
+    },
+    {
+      icon: MapPin,
+      title: "Nossas Unidades",
+      info: [
+        { label: "Sede Importadora", address: "Rua Joao Thomaz Pinto, 1570", city: "Itajaí 88313-045, SC - Brasil" },
+        { label: "Showroom & Atendimento", address: "R. Adolfo André, 497 - Centro", city: "Atibaia 12940-280, SP - Brasil" }
+      ]
+    },
+    {
+      icon: Clock,
+      title: "Horário Comercial",
+      info: "Segunda à Sexta: 8h às 18h | Sábado: 8h às 12h"
+    }
+  ];
+
   return (
-    <div className="flex flex-col max-md:px-4 md:px-6 lg:px-40 xl:px-60 2xl:px-80 gap-5">
-      <div className="flex flex-col items-center text-center gap-3">
-        <p className="bg-white/50 text-white p-1 rounded-4xl max-lg:text-sm lg:text-md text-center w-34">
-          Entre em contato
-        </p>
-        <h2 className="text-center font-bold max-lg:text-3xl lg:text-4xl text-white">
-          Fale com nossos especialistas
-        </h2>
-        <p className="text-white text-center max-lg:text-xl lg:text-2xl">
-          Estamos prontos para te atender e encontrar a melhor solução para o
-          seu negócio.
-        </p>
-      </div>
-      <div className="flex max-md:flex-col md:flex-row gap-4 h-full xl:px-40 2xl:px-60">
-        <div className="flex flex-col max-md:gap-3 md:w-2/5 md:gap-5 md:justify-center">
-          <div className="flex flex-row rounded-xl justify-center items-center bg-white shadow-md text-lg lg:text-xl p-6 gap-6">
-            <div className="bg-blue-700/10 rounded-full p-2 h-[38px] w-[38px]">
-              <Mail className="text-[#00003d]" size={20} />
-            </div>
-            <div className="w-9/10">
-              <p className="font-semibold">Email</p>
-              <p>contato@bmimports.com.br</p>
-            </div>
-          </div>
-          <div className="flex flex-row rounded-xl justify-center items-center bg-white shadow-md text-lg lg:text-xl p-6 gap-6">
-            <div className="bg-blue-700/10 rounded-full p-2 h-[38px] w-[38px]">
-              <Phone className="text-[#00003d]" size={20} />
-            </div>
-            <div className="w-9/10">
-              <p className="font-semibold">Telefone</p>
-              <p>(11) 98997-2671</p>
-            </div>
-          </div>
-          <div className="flex flex-row rounded-xl justify-center items-center bg-white shadow-md text-lg lg:text-xl p-6 gap-6">
-            <div className="bg-blue-700/10 rounded-full p-2 h-[38px] w-[38px]">
-              <MapPin className="text-[#00003d]" size={20} />
-            </div>
-            <div className="w-9/10">
-              <p className="font-semibold">Endereços</p>
-              <div>
-                <p className="font-semibold">Importadora: </p>
-                <p>Rua Joao Thomaz Pinto, 1570</p>
-                <p>Itajaí 88313-045, BR</p>
-              </div>
-              <div>
-                <p className="font-semibold">Exportadora:</p>
-                <p>R. Adolfo André, 497 - Centro</p>
-                <p>Atibaia - SP, 12940-280, BR</p>
-              </div>
-            </div>
-          </div>
+    <section ref={sectionRef} id="contato" className="py-24 lg:py-32 bg-zinc-50 relative overflow-hidden">
+      {/* Elementos decorativos */}
+      <div className="absolute top-20 left-20 w-60 h-60 bg-accent-blue/5 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-20 right-20 w-80 h-80 bg-red-500/5 rounded-full blur-3xl animate-float" style={{animationDelay: '1.5s'}}></div>
+      
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative">
+        {/* Header */}
+        <div className={`text-center mb-20 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h2 className="heading-primary mb-8">
+            Fale Conosco
+          </h2>
+          <p className="text-xl leading-relaxed text-slate-600 max-w-5xl mx-auto">
+            Nossa equipe de especialistas está pronta para atender você com excelência e encontrar as melhores soluções estratégicas para o seu negócio. 
+            Entre em contato através dos nossos canais diretos ou preencha o formulário detalhado abaixo para uma consultoria personalizada.
+          </p>
         </div>
-        <div className="flex flex-col rounded-xl bg-white shadow-md text-lg lg:text-xl p-6 gap-6 md:w-3/5">
-          <h3 className="font-semibold max-lg:text-xl lg:text-2xl">
-            Envie sua mensagem
-          </h3>
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-4 items-center"
-          >
-            <div className="flex flex-col w-full gap-2">
-              <div className="flex max-md:flex-col md:flex-row max-lg:gap-2 lg:gap-6">
-                <div className="flex flex-col md:w-1/2">
-                  <label htmlFor="">
-                    Nome <span className="text-red-600 md:w-1/2">*</span>
+
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+          {/* Informações de Contato */}
+          <div className={`space-y-8 transition-all duration-1000 ease-out delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+            {contactInfo.map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <div key={index} className="bg-white rounded-3xl p-8 shadow-medium hover:shadow-large motion-premium group">
+                  <div className="flex items-start gap-6">
+                    <div className="flex-shrink-0">
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 motion-premium shadow-medium ${
+                        index % 2 === 0 ? 'bg-gradient-accent' : 'bg-gradient-to-br from-red-500 to-red-600'
+                      }`}>
+                        <IconComponent size={22} className="text-white" />
+                      </div>
+                    </div>
+                    <div className="flex-grow">
+                      <h3 className={`text-lg font-bold mb-3 motion-safe ${
+                        index % 2 === 0 ? 'text-slate-800 group-hover:text-accent-blue' : 'text-slate-800 group-hover:text-accent-red'
+                      }`}>
+                        {item.title}
+                      </h3>
+                      {Array.isArray(item.info) ? (
+                        <div className="space-y-4">
+                          {item.info.map((location, idx) => (
+                            <div key={idx}>
+                              <p className="font-semibold text-slate-800">{location.label}:</p>
+                              <p className="text-slate-600">{location.address}</p>
+                              <p className="text-slate-600">{location.city}</p>
+                            </div>
+                          ))}
+                        </div>
+                      ) : item.link ? (
+                        <a 
+                          href={item.link} 
+                          className="text-slate-600 hover:text-accent-red motion-safe font-medium"
+                        >
+                          {item.info}
+                        </a>
+                      ) : (
+                        <p className="text-slate-600 font-medium">{item.info}</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Formulário Premium */}
+          <div className={`bg-white rounded-3xl p-10 shadow-premium transition-all duration-1000 ease-out delay-500 border border-slate-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
+            <h3 className="text-2xl font-bold text-slate-800 mb-8">
+              Envie sua Mensagem
+            </h3>
+
+            {submitStatus && (
+              <div className={`mb-8 p-6 rounded-2xl flex items-center gap-4 shadow-medium ${
+                submitStatus.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'
+              }`}>
+                {submitStatus.type === 'success' ? <CheckCircle size={22} /> : <Mail size={22} />}
+                <span className="font-medium">{submitStatus.message}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-3">
+                    Nome <span className="text-accent-red">*</span>
                   </label>
                   <input
                     type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Seu nome"
-                    className="rounded-md border-gray-200 border-1 p-2 shadow-sm"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                    placeholder="Seu nome completo"
+                    className="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe shadow-soft"
+                    required
                   />
                 </div>
-                <div className="flex flex-col md:w-1/2">
-                  <label htmlFor="">Empresa</label>
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-3">
+                    Empresa
+                  </label>
                   <input
                     type="text"
-                    value={company}
-                    onChange={(e) => setCompany(e.target.value)}
+                    value={formData.company}
+                    onChange={(e) => handleInputChange('company', e.target.value)}
                     placeholder="Nome da empresa"
-                    className="rounded-md border-gray-200 border-1 p-2 shadow-sm"
+                    className="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe shadow-soft"
                   />
                 </div>
               </div>
-              <div className="flex max-md:flex-col md:flex-row max-lg:gap-2 lg:gap-6">
-                <div className="flex flex-col md:w-1/2">
-                  <label htmlFor="">
-                    E-mail <span className="text-red-600">*</span>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-3">
+                    E-mail <span className="text-accent-red">*</span>
                   </label>
                   <input
                     type="email"
-                    value={email}
-                    placeholder="Seu email"
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="rounded-md border-gray-200 border-1 p-2 shadow-sm"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    placeholder="seu@email.com"
+                    className="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe shadow-soft"
+                    required
                   />
                 </div>
-                <div className="flex flex-col md:w-1/2">
-                  <label htmlFor="">
-                    Telefone <span className="text-red-600">*</span>
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-3">
+                    Telefone <span className="text-accent-red">*</span>
                   </label>
                   <IMaskInput
-                    id="telefone"
                     mask="(00) 00000-0000"
-                    value={tel}
-                    onAccept={(value) => setTel(value)}
-                    placeholder="(xx) xxxxx-xxxx"
-                    className="rounded-md border-gray-200 border p-2 shadow-sm"
+                    value={formData.tel}
+                    onAccept={(value) => handleInputChange('tel', value)}
+                    placeholder="(11) 99999-9999"
+                    className="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe shadow-soft"
+                    required
                   />
                 </div>
               </div>
-              <div className="flex flex-col">
-                <label htmlFor="">
-                  Mensagem <span className="text-red-600">*</span>
+
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-3">
+                  Mensagem <span className="text-accent-red">*</span>
                 </label>
                 <textarea
-                  name=""
-                  id=""
-                  value={message}
-                  placeholder="Sua mensagem"
-                  onChange={(e) => setMessage(e.target.value)}
-                  className="rounded-md border-gray-200 border-1 p-2 h-40 shadow-sm"
+                  value={formData.message}
+                  onChange={(e) => handleInputChange('message', e.target.value)}
+                  placeholder="Conte-nos sobre seu projeto ou necessidade..."
+                  rows={6}
+                  className="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe resize-none shadow-soft"
+                  required
                 />
               </div>
-            </div>
-            <button
-              type="submit"
-              className="p-2 rounded-md bg-[#00003d] hover:bg-[#0a0a81] text-white font-semibold w-50 cursor-pointer"
-            >
-              Enviar mensagem
-            </button>
-          </form>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full py-5 px-8 rounded-2xl font-bold text-lg motion-premium flex items-center justify-center gap-3 relative overflow-hidden group ${
+                  isSubmitting 
+                    ? 'bg-slate-400 cursor-not-allowed' 
+                    : 'bg-red-500 hover:bg-red-600 hover:scale-105 shadow-premium'
+                } text-white`}
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span className="relative z-10">Enviando...</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="relative z-10">Enviar Mensagem</span>
+                    <Send size={20} className="relative z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -1,90 +1,221 @@
-import { Instagram } from "lucide-react";
+import { Instagram, Mail, Phone, MapPin, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "../assets/img/logoBranca.png";
+import megaTradingLogo from "../assets/megatrading.png";
+import nobreTradingLogo from "../assets/nobretrading.png";
 
-function Footer({ onScroll, refs }) {
+function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  const quickLinks = [
+    { label: "Home", href: "#home" },
+    { label: "Sobre Nós", href: "#sobre" },
+    { label: "Diferenciais", href: "#diferenciais" },
+    { label: "Missão", href: "#missao" },
+    { label: "Segmentos", href: "#segmentos" },
+    { label: "Parceiros", href: "#parceiros" },
+    { label: "Contato", href: "#contato" }
+  ];
+
+  const segments = [
+    "Equipamentos de Academia", "Setor Hoteleiro", "Pisos Vinílicos Premium", "Painéis Arquitetônicos",
+    "Linha Travel Premium", "Máquinas Compactadoras", "Móveis Corporativos", "Metais Sanitários"
+  ];
+
+  const handleCatalogClick = () => {
+    window.open("https://catalogo.bmimports.com.br", "_blank");
+  };
+
+  const handleLinkClick = (href) => {
+    if (href.startsWith('#')) {
+      const element = document.querySelector(href);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="w-full bg-[#ffffff] flex flex-col py-3">
-      <div className="p-3 pt-5 gap-5 flex flex-col lg:flex-row lg:p-8 justify-center lg:gap-20 2xl:gap-40">
-        <div className="flex flex-col gap-4 md:px-15 lg:px-30 xl:px-40 2xl:px-50">
-          <div className="flex gap-3 flex-col">
-            <div className="flex flex-row gap-2">
-              <div className="border-b-1 border-b-gray-500 w-full pb-6 pl-8">
-                <p className="font-bold text-lg">BM IMPORTS</p>
-              </div>
-            </div>
-          </div>
-          <div className="flex max-md:flex-col md:flex-row gap-10 px-4">
-            <div className="flex flex-col gap-3 md:w-1/3">
-              <p className="text-xl font-semibold">Endereço</p>
-              <div>
-                <p className="text-md text-gray-600">
-                  Rua Joao Thomaz Pinto, 1570
+    <footer className="bg-gray-900 text-white relative overflow-hidden">
+      {/* Elementos decorativos */}
+      <div className="absolute top-20 right-20 w-40 h-40 bg-corporate-red/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-20 w-60 h-60 bg-primary-blue/10 rounded-full blur-3xl"></div>
+
+      <div className="relative z-10">
+        {/* Main Footer Content */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          <div className="grid lg:grid-cols-4 gap-12">
+            {/* Company Info */}
+            <div className="lg:col-span-1">
+              <div className="mb-6">
+                <img src={logo} alt="BM Imports" className="h-10 w-auto mb-4" />
+                <h3 className="text-xl font-bold mb-4">BM Imports</h3>
+                <p className="text-slate-300 leading-relaxed">
+                  Consultoria e assessoria altamente especializada em importação e distribuição internacional, 
+                  conectando fornecedores premium globais a clientes locais com excelência, qualidade superior e confiança absoluta.
                 </p>
-                <p className="text-md text-gray-600">Itajaí 88313-045, BR</p>
               </div>
-              <p className="text-sm text-gray-600 cursor-pointer underline hover:text-gray-950">
+
+              {/* Social Links */}
+              <div className="flex items-center gap-4">
+                <span className="text-sm text-gray-300">Siga-nos:</span>
                 <a
-                  href="mailto:contato@bmimports.com.br"
+                  href="https://www.instagram.com/bm.shop_br/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-corporate-red transition-all-smooth hover:scale-110"
                 >
-                  contato@bmimports.com.br
+                  <Instagram size={20} />
                 </a>
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 md:w-1/3">
-              <p className="text-xl font-semibold">Loja física</p>
-              <div>
-                <p className="text-md text-gray-600">
-                  R. Adolfo André, 497 - Centro
-                </p>
-                <p className="text-md text-gray-600">
-                  Atibaia - SP, 12940-280, BR
-                </p>
               </div>
             </div>
-            <div className="flex flex-col gap-4 md:w-1/3">
-              <p className="text-xl font-semibold">Quem somos</p>
-              <p className="text-md text-gray-600">
-                <span className="font-bold">
-                  {" "}
-                  A BM Imports atua como Importadora e distribuidora de produtos
-                  importados de vários seguimentos, entre eles:{" "}
-                </span>
-                Setor químico, Tubos Flexíveis, Eletrodos, Casa & Construção,
-                Máquinas para obras, Motores, Fitness, Pet, entre outros.
-              </p>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-lg font-bold mb-6">Links Rápidos</h4>
+              <ul className="space-y-3">
+                {quickLinks.map((link, index) => (
+                  <li key={index}>
+                    <button
+                      onClick={() => handleLinkClick(link.href)}
+                      className="text-gray-300 hover:text-white transition-all-smooth hover:translate-x-1"
+                    >
+                      {link.label}
+                    </button>
+                  </li>
+                ))}
+                <li>
+                  <button
+                    onClick={handleCatalogClick}
+                    className="text-gray-300 hover:text-corporate-red transition-all-smooth hover:translate-x-1 flex items-center gap-2"
+                  >
+                    Catálogo
+                    <ExternalLink size={14} />
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Segments */}
+            <div>
+              <h4 className="text-lg font-bold mb-6">Segmentos</h4>
+              <ul className="space-y-3">
+                {segments.map((segment, index) => (
+                  <li key={index}>
+                    <span className="text-gray-300 text-sm">
+                      {segment}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h4 className="text-lg font-bold mb-6">Contato</h4>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <Mail size={18} className="text-corporate-red mt-1 flex-shrink-0" />
+                  <div>
+                    <a
+                      href="mailto:contato@bmimports.com.br"
+                      className="text-gray-300 hover:text-white transition-all-smooth"
+                    >
+                      contato@bmimports.com.br
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <Phone size={18} className="text-corporate-red mt-1 flex-shrink-0" />
+                  <div>
+                    <a
+                      href="tel:+5511989972671"
+                      className="text-gray-300 hover:text-white transition-all-smooth"
+                    >
+                      (11) 98997-2671
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <MapPin size={18} className="text-corporate-red mt-1 flex-shrink-0" />
+                  <div className="text-gray-300">
+                    <div className="mb-2">
+                      <p className="font-semibold text-white">Importadora:</p>
+                      <p className="text-sm">Rua Joao Thomaz Pinto, 1570</p>
+                      <p className="text-sm">Itajaí 88313-045, BR</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white">Loja física:</p>
+                      <p className="text-sm">R. Adolfo André, 497 - Centro</p>
+                      <p className="text-sm">Atibaia - SP, 12940-280, BR</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Partners Section */}
+        <div className="border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="text-center">
+              <h4 className="text-lg font-bold mb-8 text-white">Nossos Parceiros</h4>
+              <div className="flex justify-center items-center gap-12">
+                {/* Logos Reais dos Parceiros */}
+                <div className="glass-effect rounded-2xl p-6 hover:bg-white/15 motion-premium hover:scale-105">
+                  <div className="w-40 h-16 bg-white rounded-xl flex items-center justify-center p-3 shadow-medium">
+                    <img 
+                      src={nobreTradingLogo} 
+                      alt="Nobre Trading"
+                      className="max-w-full max-h-full object-contain filter hover:brightness-110 transition-all duration-300"
+                    />
+                  </div>
+                </div>
+                
+                <div className="glass-effect rounded-2xl p-6 hover:bg-white/15 motion-premium hover:scale-105">
+                  <div className="w-40 h-16 bg-white rounded-xl flex items-center justify-center p-3 shadow-medium">
+                    <img 
+                      src={megaTradingLogo} 
+                      alt="Mega Trading"
+                      className="max-w-full max-h-full object-contain filter hover:brightness-110 transition-all duration-300"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-300">
+                <p>© {currentYear} BM Imports. Todos os direitos reservados.</p>
+                <span className="hidden md:block">|</span>
+                <p>DevTech Softwares</p>
+              </div>
+              
+              <div className="flex items-center gap-6 text-sm">
+                <Link 
+                  to="/policy" 
+                  className="text-gray-300 hover:text-white transition-all-smooth"
+                >
+                  Política de Privacidade
+                </Link>
+                <button 
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="text-gray-300 hover:text-corporate-red transition-all-smooth"
+                >
+                  Voltar ao Topo
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex justify-between px-5">
-        <div className="flex flex-row gap-1 text-gray-600 mt-5">
-          <p className="underline  hover:text-red-400 transition-all ease-in-out duration-100">
-            <a href="#">Mapa do site</a>
-          </p>
-          <p className="underline hover:text-red-400 transition-all ease-in-out duration-100">
-            <Link to="/policy">Política de Privacidade</Link>
-          </p>
-        </div>
-        <div className="flex flex-row items-center gap-5 pb-5">
-          <p className="max-md:hidden">Siga-nos</p>
-          <a
-            href="https://www.instagram.com/bm.shop_br/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Instagram className="rounded-full fill-blue-700 text-white h-12 w-12 cursor-pointer" />
-          </a>
-        </div>
-      </div>
-      <hr className="text-gray-300" />
-      <div className="text-sm p-4 text-gray-700 flex justify-center items-center lg:py-10 lg:px-35">
-        <p className="text-center">
-          © 2025 BM Imports. DevTech Softwares. Todos os direitos reservados.
-        </p>
-      </div>
-    </div>
+    </footer>
   );
 }
 

@@ -1,170 +1,136 @@
-import { Menu, X } from "lucide-react";
+import { Menu, X, ExternalLink } from "lucide-react";
 import { useState, useEffect } from "react";
 import logo from "../assets/img/logo.png";
 import logoW from "../assets/img/logoBranca.png";
-import { useNavigate } from "react-router-dom";
+import fachadaImage from "../assets/img/fachada.jpg";
 
 function Header({ onScroll, refs }) {
-  const [toggle, setToggle] = useState(true);
-  const [headerBg, setHeaderBg] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (refs.homeRef && refs.homeRef.current) {
-        const photoHeight = refs.homeRef.current.offsetHeight;
-        if (window.scrollY >= photoHeight) {
-          setHeaderBg(true);
-        } else {
-          setHeaderBg(false);
-        }
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [refs.homeRef]);
+  const handleCatalogClick = () => {
+    window.open("https://catalogo.bmimports.com.br", "_blank");
+  };
 
-  function handleRedirectCatalogue() {
-    console.log("redirecting");
-    // Atribua o URL, não chame como uma função
-    window.location.href = "https://catalogo.bmimports.com.br";
-  }
+  const menuItems = [
+    { label: "Home", ref: refs?.homeRef },
+    { label: "Sobre Nós", ref: refs?.aboutRef },
+    { label: "Diferenciais", ref: refs?.benefitsRef },
+    { label: "Missão", ref: refs?.missionRef },
+    { label: "Segmentos", ref: refs?.segmentsRef },
+    { label: "Parceiros", ref: refs?.partnersRef },
+    { label: "Contato", ref: refs?.contactRef },
+  ];
+
+  const handleMenuClick = (ref) => {
+    onScroll?.(ref);
+    setIsMenuOpen(false);
+  };
+
   return (
-    <nav className="fixed w-full top-0 z-20">
-      <div
-        className={`flex justify-between p-4 md:px-15 xl:px-30 2xl:px-60 ${
-          headerBg ? "bg-white shadow-md" : "bg-transparent"
-        } transition-colors duration-300`}
-      >
-        {headerBg ? (
-          <div onClick={() => onScroll(refs.homeRef)}>
+    <nav
+      className={`fixed w-full top-0 z-50 transition-all-smooth ${
+        isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
+      }`}
+      style={isScrolled ? {
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url(${fachadaImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      } : {}}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16 lg:h-20">
+          {/* Logo */}
+          <div
+            onClick={() => handleMenuClick(refs?.homeRef)}
+            className="cursor-pointer transition-all-smooth hover:scale-105"
+          >
             <img
-              src={logo}
-              alt=""
-              className="lg:h-[35px] h-[30px] cursor-pointer"
+              src={isScrolled ? logo : logoW}
+              alt="BM Imports"
+              className="h-8 lg:h-10 w-auto"
             />
           </div>
-        ) : (
-          <div onClick={() => onScroll(refs.homeRef)}>
-            <img
-              src={logoW}
-              alt=""
-              className="lg:h-[35px] h-[30px] cursor-pointer"
-            />
-          </div>
-        )}
 
-        <div className="lg:hidden">
-          <Menu
-            onClick={() => setToggle(false)}
-            className={`cursor-pointer md:hidden ${
-              headerBg ? "text-black" : "text-white"
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center space-x-8">
+            {menuItems.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => handleMenuClick(item.ref)}
+              className={`font-medium motion-safe hover:scale-105 ${
+                isScrolled
+                  ? "text-slate-800 hover:text-accent-blue"
+                  : "text-white hover:text-slate-200 drop-shadow-lg"
+              } relative group`}
+              >
+                {item.label}
+                <span className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                  isScrolled ? 'bg-red-500' : 'bg-white'
+                }`}></span>
+              </button>
+            ))}
+
+            {/* CTA Button */}
+            <button
+              onClick={handleCatalogClick}
+              className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-2xl font-semibold motion-premium hover:scale-105 flex items-center gap-2 shadow-large relative overflow-hidden group"
+            >
+              <span className="relative z-10">Acessar Catálogo</span>
+              <ExternalLink size={16} className="relative z-10" />
+              <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className={`lg:hidden p-2 rounded-md transition-all-smooth ${
+              isScrolled ? "text-gray-700" : "text-white"
             }`}
-            size={30}
-          />
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
+        {/* Mobile Menu */}
         <div
-          className={`
-            fixed top-0 right-0 w-full h-full bg-white opacity-[98%]
-            transition-all duration-500 ease-in-out lg:hidden
-            ${
-              toggle
-                ? "translate-x-full opacity-0"
-                : "translate-x-0 opacity-100"
-            }
-          `}
-        >
-          <X
-            size={30}
-            onClick={() => setToggle(true)}
-            className="absolute right-4 top-4 cursor-pointer text-black"
-          />
-          <div className="flex flex-col items-center pt-20 gap-14 font-semibold text-3xl text-black">
-            <p
-              className="cursor-pointer"
-              onClick={() => {
-                onScroll(refs.homeRef);
-                setToggle(true);
-              }}
-            >
-              Home
-            </p>
-            <p
-              className="cursor-pointer"
-              onClick={() => {
-                onScroll(refs.aboutRef);
-                setToggle(true);
-              }}
-            >
-              Sobre nós
-            </p>
-            <p
-              className="cursor-pointer"
-              onClick={() => {
-                onScroll(refs.segmentsRef);
-                setToggle(true);
-              }}
-            >
-              Nossos segmentos
-            </p>
-            <p
-              className="cursor-pointer"
-              onClick={handleRedirectCatalogue}
-            >
-              Acesse nosso catálogo
-            </p>
-          </div>
-        </div>
-
-        <div
-          className={`flex-row gap-4 hidden md:flex text-lg lg:text-xl ${
-            headerBg ? "text-black" : "text-white"
+          className={`lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-lg transition-all-smooth ${
+            isMenuOpen
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-2 pointer-events-none"
           }`}
         >
-          <p
-            className={`cursor-pointer ${
-              headerBg
-                ? "hover:border-b-black hover:border-b-1 transition-all ease-in-out duration-100"
-                : "hover:border-b-white hover:border-b-1 transition-all ease-in-out duration-100"
-            }`}
-            onClick={() => onScroll(refs.homeRef)}
-          >
-            Home
-          </p>
-          <p
-            className={`cursor-pointer ${
-              headerBg
-                ? "hover:border-b-black hover:border-b-1 transition-all ease-in-out duration-100"
-                : "hover:border-b-white hover:border-b-1 transition-all ease-in-out duration-100"
-            }`}
-            onClick={() => onScroll(refs.aboutRef)}
-          >
-            Sobre nós
-          </p>
-          <p
-            className={`cursor-pointer ${
-              headerBg
-                ? "hover:border-b-black hover:border-b-1 transition-all duration-100 ease-in-out"
-                : "hover:border-b-white hover:border-b-1 transition-all ease-in-out duration-500"
-            }`}
-            onClick={() => onScroll(refs.segmentsRef)}
-          >
-            Nossos segmentos
-          </p>
-          <p
-            className={`cursor-pointer ${
-              headerBg
-                ? "hover:border-b-black hover:border-b-1 transition-all duration-100 ease-in-out"
-                : "hover:border-b-white hover:border-b-1 transition-all ease-in-out duration-500"
-            }`}
-            onClick={handleRedirectCatalogue}
-          >
-            Acesse nosso catálogo
-          </p>
+          <div className="px-4 py-6 space-y-4">
+            {menuItems.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => handleMenuClick(item.ref)}
+                className="block w-full text-left font-medium text-slate-700 hover:text-accent-blue motion-safe py-3 border-b border-slate-100 last:border-b-0"
+              >
+                {item.label}
+              </button>
+            ))}
+            <button
+              onClick={handleCatalogClick}
+              className="w-full bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-2xl font-semibold motion-premium flex items-center justify-center gap-2 mt-6 shadow-medium"
+            >
+              Acessar Catálogo
+              <ExternalLink size={16} />
+            </button>
+          </div>
         </div>
       </div>
     </nav>
