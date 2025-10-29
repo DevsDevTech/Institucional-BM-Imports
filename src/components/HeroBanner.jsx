@@ -76,16 +76,7 @@ const HeroBanner = forwardRef(({ refs, onScroll }, ref) => {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <button
-            onClick={handleScrollToAbout}
-            className="text-white/70 hover:text-white transition-all-smooth"
-          >
-            <ChevronDown size={32} />
-          </button>
-        </div>
       </div>
-
       {/* Elementos decorativos modernos */}
       <div className="absolute top-20 left-10 w-20 h-20 bg-blue-400/10 rounded-full blur-xl"></div>
       <div className="absolute bottom-32 right-16 w-32 h-32 bg-red-400/10 rounded-full blur-2xl"></div>
@@ -93,6 +84,14 @@ const HeroBanner = forwardRef(({ refs, onScroll }, ref) => {
       {/* Elementos geométricos sutis */}
       <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-white/20 rounded-full animate-pulse"></div>
       <div className="absolute bottom-1/4 left-1/4 w-1 h-1 bg-blue-300/30 rounded-full animate-pulse delay-1000"></div>
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <button
+            onClick={handleScrollToAbout}
+            className="text-white/70 hover:text-white transition-all-smooth"
+          >
+            <ChevronDown size={32} />
+          </button>
+        </div>
     </section>
   );
 });

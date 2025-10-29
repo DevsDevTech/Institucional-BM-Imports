@@ -1,11 +1,12 @@
-import { ExternalLink, Dumbbell, Bed, Grid3X3, Layers, Luggage, Truck, Armchair, Droplets } from "lucide-react";
+import { ExternalLink, Dumbbell, Bed, Luggage, Truck, Hammer, Sofa } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 // Importando imagens reais
 import academiaImg from "../assets/img/Academia/3.jpg";
-import hotelaria1Img from "../assets/img/Hotelaria/14.jpg";
+import hotelaria1Img from "../assets/img/Hotelaria/19.jpg";
 import hotelaria2Img from "../assets/img/Hotelaria/17.jpg";
-import pisoImg from "../assets/img/Piso vinílico e ripado/20.jpg";
 import painelImg from "../assets/img/Piso vinílico e ripado/21.jpg";
+import maquina from "../assets/img/maquina.png";
+import moveis from "../assets/moveis.jpg";
 
 function OurSegments() {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,53 +31,42 @@ function OurSegments() {
 
   const segments = [
     {
-      title: "Equipamentos de Academia",
+      title: "Academia",
       description: "Equipamentos profissionais de academia com tecnologia avançada, certificação internacional e garantia estendida para ginásios e academias de alto padrão.",
       image: academiaImg,
       icon: Dumbbell
     },
     {
-      title: "Setor Hoteleiro",
+      title: "Hotelaria",
       description: "Produtos premium e acessórios sofisticados para hotelaria de luxo, incluindo móveis exclusivos, decoração contemporânea e amenities diferenciados.",
       image: hotelaria1Img,
       icon: Bed
     },
     {
-      title: "Pisos Vinílicos Premium",
-      description: "Pisos vinílicos de última geração com tecnologia antiderrapante, resistência superior e design moderno para ambientes comerciais e residenciais.",
-      image: pisoImg,
-      icon: Grid3X3
-    },
-    {
-      title: "Painéis Arquitetônicos",
-      description: "Painéis decorativos ripados premium para revestimento sofisticado e acabamento arquitetônico de alto padrão em projetos comerciais e residenciais.",
+      title: "Construção",
+      description: "Pisos vinílicos de última geração (antiderrapante, resistente, moderno) e painéis decorativos ripados premium. Soluções sofisticadas de alto padrão para projetos comerciais e residenciais.",
       image: painelImg,
-      icon: Layers
+      icon: Hammer
     },
     {
-      title: "Linha Travel Premium",
+      title: "Móveis",
+      description: "Móveis de design exclusivo e acabamento premium. Peças selecionadas que unem sofisticação e conforto para ambientes residenciais e corporativos.",
+      image: moveis,
+      icon: Sofa
+    },
+    {
+      title: "Travel",
       description: "Malas executivas e acessórios de viagem de luxo com design inovador, materiais premium e funcionalidades inteligentes para o viajante moderno.",
       image: hotelaria2Img,
       icon: Luggage
     },
     {
-      title: "Máquinas Compactadoras",
+      title: "Máquinas",
       description: "Compactadoras industriais de alta performance, disponíveis em versões a gasolina e elétricas, com tecnologia alemã para construção civil pesada.",
-      image: academiaImg,
+      image: maquina,
       icon: Truck
     },
-    {
-      title: "Móveis Corporativos",
-      description: "Linha completa de móveis corporativos e residenciais com design contemporâneo italiano, materiais sustentáveis e ergonomia avançada.",
-      image: hotelaria1Img,
-      icon: Armchair
-    },
-    {
-      title: "Metais Sanitários",
-      description: "Torneiras e metais sanitários de luxo com tecnologia de economia de água, acabamento premium e design minimalista para banheiros e cozinhas modernas.",
-      image: pisoImg,
-      icon: Droplets
-    }
+
   ];
 
   const handleCatalogClick = () => {
@@ -98,7 +88,7 @@ function OurSegments() {
             Segmentos de Atuação
           </h2>
           <p className="text-xl leading-relaxed text-slate-300 max-w-5xl mx-auto">
-            Atuamos estrategicamente em 8 setores distintos, oferecendo soluções completas, especializadas e customizadas 
+            Atuamos estrategicamente em 6 setores distintos, oferecendo soluções completas, especializadas e customizadas 
             para cada necessidade específica do mercado brasileiro e internacional.
           </p>
         </div>

@@ -86,7 +86,7 @@ function Header({ onScroll, refs }) {
             {/* CTA Button */}
             <button
               onClick={handleCatalogClick}
-              className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-2xl font-semibold motion-premium hover:scale-105 flex items-center gap-2 shadow-large relative overflow-hidden group"
+              className="bg-red-500 hover:bg-red-600 text-white px-8 py-2 rounded-2xl font-semibold motion-premium hover:scale-105 flex items-center gap-2 shadow-large relative overflow-hidden group"
             >
               <span className="relative z-10">Acessar Catálogo</span>
               <ExternalLink size={16} className="relative z-10" />

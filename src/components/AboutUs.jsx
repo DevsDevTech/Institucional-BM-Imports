@@ -1,6 +1,6 @@
 import { Building2, Globe, Users, Award } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import aboutUsImage from "../assets/img/aboutUs2.jfif";
+import aboutUsImage from "../assets/img/fachada.jpg";
 
 function AboutUs() {
   const [isVisible, setIsVisible] = useState(false);
