@@ -192,7 +192,7 @@ function Footer() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-300">
-                <p>© {currentYear} BM Imports. Todos os direitos reservados.</p>
+                <p>© {currentYear} Bm Imports Comercio Internacional LTDA - 34.091.863/0001-33. Todos os direitos reservados.</p>
                 <span className="hidden md:block">|</span>
                 <p>DevTech Softwares</p>
               </div>
