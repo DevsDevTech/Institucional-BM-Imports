@@ -69,7 +69,7 @@ function PartnersSection() {
           <h2 className="heading-primary mb-8">
             Nossos Parceiros
           </h2>
-          <p className="text-xl leading-relaxed text-slate-600 max-w-5xl mx-auto">
+          <p className="text-xl leading-relaxed text-slate-800 max-w-5xl mx-auto">
             Mantemos parcerias estratégicas exclusivas com empresas líderes e renomadas no mercado internacional, 
             garantindo qualidade excepcional, confiabilidade operacional e inovação constante em todos os nossos produtos e serviços.
           </p>
@@ -84,8 +84,8 @@ function PartnersSection() {
               style={{ transitionDelay: `${300 + index * 200}ms` }}
             >
               {/* Logo Real Premium */}
-              <div className="bg-white rounded-3xl p-10 shadow-large hover:shadow-premium motion-premium hover:scale-105 group-hover:-translate-y-2 border border-slate-200">
-                <div className="w-80 h-24 bg-gradient-light rounded-2xl flex items-center justify-center border border-slate-100 shadow-soft p-4">
+              <div className="bg-white rounded-3xl p-10 hover:shadow-premium motion-premium hover:scale-105 group-hover:-translate-y-2 border border-slate-200">
+                <div className="w-80 h-24 bg-gradient-light rounded-2xl flex items-center justify-center border border-slate-100 p-4">
                   <img 
                     src={partner.logo} 
                     alt={partner.name}
@@ -99,9 +99,6 @@ function PartnersSection() {
 
         {/* Benefícios da Parceria Premium */}
         <div className="bg-white rounded-3xl p-12 lg:p-16 shadow-premium border border-slate-100">
-          <h3 className="text-2xl lg:text-3xl font-bold text-slate-800 text-center mb-16">
-            Por que Escolher Nossos Parceiros?
-          </h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
             {partnershipBenefits.map((benefit, index) => {
@@ -124,7 +121,7 @@ function PartnersSection() {
                     {benefit.title}
                   </h4>
                   
-                  <p className="text-slate-600 text-sm leading-relaxed">
+                  <p className="text-slate-800 text-sm leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
@@ -139,7 +136,7 @@ function PartnersSection() {
             <h3 className="text-3xl lg:text-4xl font-bold text-slate-800 mb-6">
               Quer se Tornar Nosso Parceiro?
             </h3>
-            <p className="text-slate-600 mb-10 max-w-4xl mx-auto text-lg leading-relaxed">
+            <p className="text-slate-800 mb-10 max-w-4xl mx-auto text-lg leading-relaxed">
               Estamos constantemente expandindo nossa rede de parceiros estratégicos, buscando empresas visionárias que compartilhem 
               nossos valores fundamentais de qualidade excepcional, confiabilidade operacional e excelência no atendimento ao cliente.
             </p>

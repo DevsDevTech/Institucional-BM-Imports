@@ -90,7 +90,7 @@ function ContactUs() {
       title: "Nossas Unidades",
       info: [
         { label: "Sede Importadora", address: "Rua Joao Thomaz Pinto, 1570", city: "Itajaí 88313-045, SC - Brasil" },
-        { label: "Showroom & Atendimento", address: "R. Adolfo André, 497 - Centro", city: "Atibaia 12940-280, SP - Brasil" }
+        { label: "Distribuidora e Showroom", address: "R. Adolfo André, 497 - Centro", city: "Atibaia 12940-280, SP - Brasil" }
       ]
     },
     {
@@ -112,7 +112,7 @@ function ContactUs() {
           <h2 className="heading-primary mb-8">
             Fale Conosco
           </h2>
-          <p className="text-xl leading-relaxed text-slate-600 max-w-5xl mx-auto">
+          <p className="text-xl leading-relaxed text-slate-800 max-w-5xl mx-auto">
             Nossa equipe de especialistas está pronta para atender você com excelência e encontrar as melhores soluções estratégicas para o seu negócio. 
             Entre em contato através dos nossos canais diretos ou preencha o formulário detalhado abaixo para uma consultoria personalizada.
           </p>
@@ -144,20 +144,20 @@ function ContactUs() {
                           {item.info.map((location, idx) => (
                             <div key={idx}>
                               <p className="font-semibold text-slate-800">{location.label}:</p>
-                              <p className="text-slate-600">{location.address}</p>
-                              <p className="text-slate-600">{location.city}</p>
+                              <p className="text-slate-800">{location.address}</p>
+                              <p className="text-slate-800">{location.city}</p>
                             </div>
                           ))}
                         </div>
                       ) : item.link ? (
                         <a 
                           href={item.link} 
-                          className="text-slate-600 hover:text-accent-red motion-safe font-medium"
+                          className="text-slate-800 hover:text-accent-red motion-safe font-medium"
                         >
                           {item.info}
                         </a>
                       ) : (
-                        <p className="text-slate-600 font-medium">{item.info}</p>
+                        <p className="text-slate-800 font-medium">{item.info}</p>
                       )}
                     </div>
                   </div>
