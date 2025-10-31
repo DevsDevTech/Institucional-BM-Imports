@@ -96,7 +96,7 @@ function ContactUs() {
     {
       icon: Clock,
       title: "Horário Comercial",
-      info: "Segunda à Sexta: 8h às 18h | Sábado: 8h às 12h"
+      info: "Segunda à Sexta: 8h às 17h"
     }
   ];
 
