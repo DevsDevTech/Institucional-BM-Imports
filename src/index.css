@@ -6,24 +6,25 @@
 
 /* Sistema de Design Premium BM Imports */
 :root {
-  /* Cores Premium */
-  --navy-dark: #0f172a;
-  --navy-medium: #1e293b;
-  --midnight-blue: #0c1426;
-  --slate-dark: #1e293b;
-  --zinc-light: #fafafa;
-  --zinc-50: #fafafa;
-  --accent-blue: #3b82f6;
-  --accent-red: #ef4444;
-  --text-light: #f8fafc;
-  --text-dark: #334155;
-  
-  /* Gradientes Premium */
-  --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-  --gradient-dark: linear-gradient(135deg, #0c1426 0%, #1e293b 100%);
-  --gradient-light: linear-gradient(135deg, #fafafa 0%, #f1f5f9 100%);
-  --gradient-accent: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
-  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  /* Cores Premium (atualizadas para tema black/neutral) */
+  --navy-dark: #0a0a0a;       /* neutral-950 */
+  --navy-medium: #171717;     /* neutral-900 */
+  --midnight-blue: #0f0f0f;   /* fundo adicional escuro */
+  --slate-dark: #262626;      /* neutral-800 */
+  --zinc-light: #0a0a0a;      /* manter escuro */
+  --zinc-50: #0a0a0a;         /* manter escuro */
+
+  --accent-blue: #1e40af;     /* blue-800 (destaque forte) */
+  --accent-red: #ef4444;      /* red-500 (destaque forte) */
+  --text-light: #fafafa;      /* texto claro principal */
+  --text-dark: #e5e5e5;       /* texto claro secundário em tema escuro */
+
+  /* Gradientes Premium (neutros escuros) */
+  --gradient-hero: linear-gradient(135deg, #0a0a0a 0%, #171717 50%, #262626 100%);
+  --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #171717 100%);
+  --gradient-light: linear-gradient(135deg, #262626 0%, #1f1f1f 100%);
+  --gradient-accent: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
   
   /* Sombras Premium */
   --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -310,4 +311,9 @@
 /* Scroll suave */
 html {
   scroll-behavior: smooth;
+}
+
+body, html {
+  color: var(--text-light);
+  background-color: var(--navy-dark);
 }

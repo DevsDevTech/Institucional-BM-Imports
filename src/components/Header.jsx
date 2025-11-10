@@ -1,8 +1,6 @@
 import { Menu, X, ExternalLink } from "lucide-react";
 import { useState, useEffect } from "react";
-import logo from "../assets/img/logo.png";
 import logoW from "../assets/img/logoBranca.png";
-import fachadaImage from "../assets/img/fachada.jpg";
 
 function Header({ onScroll, refs }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,17 +36,7 @@ function Header({ onScroll, refs }) {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 transition-all-smooth ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
-      }`}
-      style={isScrolled ? {
-        backgroundImage: `linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url(${fachadaImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      } : {}}
+      className="fixed w-full top-0 z-50 transition-all-smooth bg-neutral-900/90 backdrop-blur-md shadow-lg"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
@@ -58,7 +46,7 @@ function Header({ onScroll, refs }) {
             className="cursor-pointer transition-all-smooth hover:scale-105"
           >
             <img
-              src={isScrolled ? logo : logoW}
+              src={logoW}
               alt="BM Imports"
               className="h-8 lg:h-10 w-auto"
             />
@@ -70,16 +58,10 @@ function Header({ onScroll, refs }) {
               <button
                 key={index}
                 onClick={() => handleMenuClick(item.ref)}
-              className={`font-medium motion-safe hover:scale-105 ${
-                isScrolled
-                  ? "text-slate-800 hover:text-accent-blue"
-                  : "text-white hover:text-slate-200 drop-shadow-lg"
-              } relative group`}
+                className="font-medium text-white hover:text-accent-blue motion-safe hover:scale-105 relative group"
               >
                 {item.label}
-                <span className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
-                  isScrolled ? 'bg-red-500' : 'bg-white'
-                }`}></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full bg-red-500"></span>
               </button>
             ))}
 
@@ -97,9 +79,7 @@ function Header({ onScroll, refs }) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`lg:hidden p-2 rounded-md transition-all-smooth ${
-              isScrolled ? "text-gray-700" : "text-white"
-            }`}
+            className="lg:hidden p-2 rounded-md transition-all-smooth text-white"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -107,7 +87,7 @@ function Header({ onScroll, refs }) {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-lg transition-all-smooth ${
+          className={`lg:hidden absolute top-full left-0 right-0 bg-neutral-900/95 backdrop-blur-md shadow-lg transition-all-smooth ${
             isMenuOpen
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-2 pointer-events-none"
@@ -118,7 +98,7 @@ function Header({ onScroll, refs }) {
               <button
                 key={index}
                 onClick={() => handleMenuClick(item.ref)}
-                className="block w-full text-left font-medium text-slate-700 hover:text-accent-blue motion-safe py-3 border-b border-slate-100 last:border-b-0"
+                className="block w-full text-left font-medium text-neutral-200 hover:text-accent-blue motion-safe py-3 border-b border-neutral-800 last:border-b-0"
               >
                 {item.label}
               </button>

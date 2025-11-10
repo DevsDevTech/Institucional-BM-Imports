@@ -74,7 +74,7 @@ function OurFocus() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 lg:py-32 bg-zinc-50 relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 lg:py-32 bg-neutral-900 relative overflow-hidden">
       {/* Elementos decorativos sutis */}
       <div className="absolute top-20 left-10 w-60 h-60 bg-accent-blue/5 rounded-full blur-3xl animate-float"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-red-500/5 rounded-full blur-3xl animate-float" style={{animationDelay: '1.5s'}}></div>
@@ -98,7 +98,7 @@ function OurFocus() {
             return (
               <div
                 key={index}
-                className={`group bg-white rounded-3xl p-8 shadow-medium hover:shadow-large motion-premium hover:-translate-y-3 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                className={`group bg-neutral-800 rounded-3xl p-8 shadow-medium hover:shadow-large motion-premium hover:-translate-y-3 border border-neutral-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 style={{ transitionDelay: `${300 + index * 120}ms` }}
               >
                 <div className="flex flex-col items-center text-center h-full">
@@ -108,13 +108,11 @@ function OurFocus() {
                     <IconComponent size={28} className="text-white" />
                   </div>
                   
-                  <h3 className={`text-lg font-extrabold mb-4 motion-safe ${
-                    index % 3 === 1 ? 'text-slate-800 group-hover:text-accent-red' : 'text-slate-800 group-hover:text-accent-blue'
-                  }`}>
+                  <h3 className={`text-lg font-extrabold mb-4 motion-safe text-white`}>
                     {item.title}
                   </h3>
                   
-                  <p className="text-slate-800 text-sm font-semibold leading-relaxed flex-grow">
+                  <p className="text-neutral-200 text-sm font-semibold leading-relaxed flex-grow">
                     {item.description}
                   </p>
 
@@ -130,9 +128,9 @@ function OurFocus() {
 
         {/* Bottom CTA Premium */}
         <div className={`text-center mt-20 transition-all duration-1000 ease-out delay-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-6 bg-white rounded-2xl px-10 py-5 shadow-large border border-slate-200">
+          <div className="inline-flex items-center gap-6 bg-neutral-800 rounded-2xl px-10 py-5 shadow-large border border-neutral-700 text-neutral-200">
             <div className="w-3 h-3 bg-accent-blue rounded-full animate-pulse"></div>
-            <p className="text-slate-800 font-bold text-lg">
+            <p className="font-bold text-lg">
               Metodologia estruturada e comprovada para importações 100% seguras e altamente eficientes
             </p>
             <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>

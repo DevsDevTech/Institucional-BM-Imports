@@ -101,7 +101,7 @@ function ContactUs() {
   ];
 
   return (
-    <section ref={sectionRef} id="contato" className="py-24 lg:py-32 bg-zinc-50 relative overflow-hidden">
+    <section ref={sectionRef} id="contato" className="py-24 lg:py-32 bg-neutral-900 relative overflow-hidden">
       {/* Elementos decorativos */}
       <div className="absolute top-20 left-20 w-60 h-60 bg-accent-blue/5 rounded-full blur-3xl animate-float"></div>
       <div className="absolute bottom-20 right-20 w-80 h-80 bg-red-500/5 rounded-full blur-3xl animate-float" style={{animationDelay: '1.5s'}}></div>
@@ -124,7 +124,7 @@ function ContactUs() {
             {contactInfo.map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <div key={index} className="bg-white rounded-3xl p-8 shadow-medium hover:shadow-large motion-premium group">
+                <div key={index} className="bg-neutral-800 rounded-3xl p-8 shadow-medium hover:shadow-large motion-premium group border border-neutral-700">
                   <div className="flex items-start gap-6">
                     <div className="flex-shrink-0">
                       <div className={`w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 motion-premium shadow-medium ${
@@ -134,30 +134,28 @@ function ContactUs() {
                       </div>
                     </div>
                     <div className="flex-grow">
-                      <h3 className={`text-lg font-bold mb-3 motion-safe ${
-                        index % 2 === 0 ? 'text-slate-800 group-hover:text-accent-blue' : 'text-slate-800 group-hover:text-accent-red'
-                      }`}>
+                      <h3 className={`text-lg font-bold mb-3 motion-safe text-white`}>
                         {item.title}
                       </h3>
                       {Array.isArray(item.info) ? (
                         <div className="space-y-4">
                           {item.info.map((location, idx) => (
                             <div key={idx}>
-                              <p className="font-semibold text-slate-800">{location.label}:</p>
-                              <p className="text-slate-800">{location.address}</p>
-                              <p className="text-slate-800">{location.city}</p>
+                              <p className="font-semibold text-neutral-200">{location.label}:</p>
+                              <p className="text-neutral-200">{location.address}</p>
+                              <p className="text-neutral-200">{location.city}</p>
                             </div>
                           ))}
                         </div>
                       ) : item.link ? (
                         <a 
                           href={item.link} 
-                          className="text-slate-800 hover:text-accent-red motion-safe font-medium"
+                          className="text-neutral-200 hover:text-accent-red motion-safe font-medium"
                         >
                           {item.info}
                         </a>
                       ) : (
-                        <p className="text-slate-800 font-medium">{item.info}</p>
+                        <p className="text-neutral-200 font-medium">{item.info}</p>
                       )}
                     </div>
                   </div>
@@ -167,14 +165,14 @@ function ContactUs() {
           </div>
 
           {/* Formulário Premium */}
-          <div className={`bg-white rounded-3xl p-10 shadow-premium transition-all duration-1000 ease-out delay-500 border border-slate-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-            <h3 className="text-2xl font-bold text-slate-800 mb-8">
+          <div className={`bg-neutral-800 rounded-3xl p-10 shadow-premium transition-all duration-1000 ease-out delay-500 border border-neutral-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
+            <h3 className="text-2xl font-bold text-white mb-8">
               Envie sua Mensagem
             </h3>
 
             {submitStatus && (
               <div className={`mb-8 p-6 rounded-2xl flex items-center gap-4 shadow-medium ${
-                submitStatus.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'
+                submitStatus.type === 'success' ? 'bg-green-950 text-green-300 border border-green-800' : 'bg-red-950 text-red-300 border border-red-800'
               }`}>
                 {submitStatus.type === 'success' ? <CheckCircle size={22} /> : <Mail size={22} />}
                 <span className="font-medium">{submitStatus.message}</span>
@@ -184,7 +182,7 @@ function ContactUs() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-3">
+                  <label className="block text-sm font-semibold text-neutral-300 mb-3">
                     Nome <span className="text-accent-red">*</span>
                   </label>
                   <input
@@ -192,12 +190,12 @@ function ContactUs() {
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
                     placeholder="Seu nome completo"
-                    className="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe shadow-soft"
+                    className="w-full px-5 py-4 bg-neutral-900 text-neutral-100 border border-neutral-700 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe shadow-soft"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-3">
+                  <label className="block text-sm font-semibold text-neutral-300 mb-3">
                     Empresa
                   </label>
                   <input
@@ -205,14 +203,14 @@ function ContactUs() {
                     value={formData.company}
                     onChange={(e) => handleInputChange('company', e.target.value)}
                     placeholder="Nome da empresa"
-                    className="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe shadow-soft"
+                    className="w-full px-5 py-4 bg-neutral-900 text-neutral-100 border border-neutral-700 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe shadow-soft"
                   />
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-3">
+                  <label className="block text-sm font-semibold text-neutral-300 mb-3">
                     E-mail <span className="text-accent-red">*</span>
                   </label>
                   <input
@@ -220,12 +218,12 @@ function ContactUs() {
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     placeholder="seu@email.com"
-                    className="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe shadow-soft"
+                    className="w-full px-5 py-4 bg-neutral-900 text-neutral-100 border border-neutral-700 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe shadow-soft"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-3">
+                  <label className="block text-sm font-semibold text-neutral-300 mb-3">
                     Telefone <span className="text-accent-red">*</span>
                   </label>
                   <IMaskInput
@@ -233,14 +231,14 @@ function ContactUs() {
                     value={formData.tel}
                     onAccept={(value) => handleInputChange('tel', value)}
                     placeholder="(11) 99999-9999"
-                    className="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe shadow-soft"
+                    className="w-full px-5 py-4 bg-neutral-900 text-neutral-100 border border-neutral-700 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe shadow-soft"
                     required
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-3">
+                <label className="block text-sm font-semibold text-neutral-300 mb-3">
                   Mensagem <span className="text-accent-red">*</span>
                 </label>
                 <textarea
@@ -248,7 +246,7 @@ function ContactUs() {
                   onChange={(e) => handleInputChange('message', e.target.value)}
                   placeholder="Conte-nos sobre seu projeto ou necessidade..."
                   rows={6}
-                  className="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe resize-none shadow-soft"
+                  className="w-full px-5 py-4 bg-neutral-900 text-neutral-100 border border-neutral-700 rounded-2xl focus:ring-2 focus:ring-accent-blue focus:border-transparent motion-safe resize-none shadow-soft"
                   required
                 />
               </div>
@@ -258,7 +256,7 @@ function ContactUs() {
                 disabled={isSubmitting}
                 className={`w-full py-5 px-8 rounded-2xl font-bold text-lg motion-premium flex items-center justify-center gap-3 relative overflow-hidden group ${
                   isSubmitting 
-                    ? 'bg-slate-400 cursor-not-allowed' 
+                    ? 'bg-neutral-700 cursor-not-allowed' 
                     : 'bg-red-500 hover:bg-red-600 hover:scale-105 shadow-premium'
                 } text-white`}
               >

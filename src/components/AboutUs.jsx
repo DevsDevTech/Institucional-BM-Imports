@@ -31,7 +31,7 @@ function AboutUs() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 lg:py-32 bg-zinc-50">
+    <section ref={sectionRef} className="py-24 lg:py-32 bg-neutral-900">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Imagem */}
@@ -57,19 +57,19 @@ function AboutUs() {
           {/* Conteúdo */}
           <div className={`order-1 lg:order-2 transition-all duration-1000 ease-out delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
             <div>
-              <h2 className="heading-primary mb-8">
+              <h2 className="heading-primary-dark mb-8">
                 Quem Somos
               </h2>
               
               <div className="space-y-8">
-                <p className="text-lg leading-relaxed text-slate-700">
+                <p className="text-lg leading-relaxed text-neutral-200">
                   Somos uma <strong className="text-accent-blue font-semibold">consultoria e assessoria especializada em importação e distribuição</strong> com 
                   sede em Atibaia-SP. Conectamos fornecedores internacionais renomados a 
                   clientes locais, oferecendo produtos com qualidade superior, prazos claros e 
                   suporte técnico especializado.
                 </p>
                 
-                <p className="text-lg leading-relaxed text-slate-700">
+                <p className="text-lg leading-relaxed text-neutral-200">
                   Trabalhamos com <strong className="text-accent-red font-semibold">importação direta e distribuidores 
                   nacionais certificados</strong> — nosso portfólio diversificado inclui: compactadoras de alta performance, máquinas e peças para 
                   construção civil, itens premium para hotelaria, pisos vinílicos de última geração, equipamentos profissionais de 
@@ -97,7 +97,7 @@ function AboutUs() {
                       }`}>
                         {stat.value}
                       </div>
-                      <div className="text-sm font-medium text-slate-800 uppercase tracking-wide">
+                      <div className="text-sm font-medium text-neutral-300 uppercase tracking-wide">
                         {stat.label}
                       </div>
                     </div>

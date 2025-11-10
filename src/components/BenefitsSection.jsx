@@ -61,7 +61,7 @@ function BenefitsSection() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 lg:py-32 bg-navy-dark relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 lg:py-32 bg-neutral-900 relative overflow-hidden">
       {/* Elementos decorativos */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-accent-blue/5 rounded-full blur-3xl animate-float"></div>
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-red-500/5 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>

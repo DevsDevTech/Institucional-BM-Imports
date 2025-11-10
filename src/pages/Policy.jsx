@@ -6,15 +6,15 @@ function Policy() {
     const nav = useNavigate()
 
   return (
-    <div className="bg-white">
-      <div className="fixed p-4 flex justify-between bg-white w-full shadow-md">
+    <div className="bg-neutral-900 text-neutral-200">
+      <div className="fixed p-4 flex justify-between bg-neutral-900/90 backdrop-blur-md w-full shadow-md text-white">
         <h1 className="text-3xl font-semibold">Política de Privacidade</h1>
         <button onClick={()=>nav('/')} className="cursor-pointer">
           <X />
         </button>
       </div>
 
-      <div className="py-25 px-5 text-justify flex flex-col gap-6 text-gray-800">
+      <div className="py-25 px-5 text-justify flex flex-col gap-6">
         <p>Política de Privacidade da BM IMPORTS COMÉRCIO INTERNACIONAL LTDA</p>
         <p>
           Esta Política de Privacidade descreve como a BM IMPORTS COMÉRCIO
@@ -116,8 +116,8 @@ function Policy() {
           <p>Esta Política de Privacidade foi atualizada em 21/08/2023.</p>
         </div>
       </div>
-      <div className="w-full p-5 border-t-1 fixed bottom-0 bg-white border-t-gray-300">
-        <p className="text-md text-gray-600">Copyright 2025</p>
+      <div className="w-full p-5 border-t-1 fixed bottom-0 bg-neutral-900 border-t-neutral-700">
+        <p className="text-md text-neutral-400">Copyright 2025</p>
       </div>
     </div>
   );
