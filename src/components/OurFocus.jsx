@@ -85,7 +85,7 @@ function OurFocus() {
           <h2 className="heading-primary mb-8">
             Missão Estratégica
           </h2>
-          <p className="text-xl leading-relaxed text-slate-800 max-w-5xl mx-auto">
+          <p className="text-xl leading-relaxed text-neutral-200 max-w-5xl mx-auto">
             Nossa metodologia proprietária oferece consultoria e assessoria altamente especializada para importar e distribuir com 
             máxima segurança, reduzindo significativamente riscos operacionais e otimizando custos em cada etapa crítica do processo.
           </p>
