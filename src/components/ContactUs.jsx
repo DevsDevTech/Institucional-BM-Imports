@@ -112,7 +112,7 @@ function ContactUs() {
           <h2 className="heading-primary mb-8">
             Fale Conosco
           </h2>
-          <p className="text-xl leading-relaxed text-slate-800 max-w-5xl mx-auto">
+          <p className="text-xl leading-relaxed text-neutral-200 max-w-5xl mx-auto">
             Nossa equipe de especialistas está pronta para atender você com excelência e encontrar as melhores soluções estratégicas para o seu negócio. 
             Entre em contato através dos nossos canais diretos ou preencha o formulário detalhado abaixo para uma consultoria personalizada.
           </p>

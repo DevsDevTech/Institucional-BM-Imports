@@ -85,7 +85,7 @@ function PartnersSection() {
             >
               {/* Logo Premium */}
               <div className="bg-neutral-800 rounded-3xl p-10 hover:shadow-premium motion-premium hover:scale-105 group-hover:-translate-y-2 border border-neutral-700">
-                <div className="w-80 h-24 bg-gradient-light rounded-2xl flex items-center justify-center border border-neutral-700 p-4">
+                <div className="w-80 h-24 bg-white rounded-2xl flex items-center justify-center border border-neutral-200 p-4">
                   <img 
                     src={partner.logo} 
                     alt={partner.name}
