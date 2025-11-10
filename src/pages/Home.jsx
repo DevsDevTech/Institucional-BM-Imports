@@ -8,6 +8,8 @@ import ContactUs from "../components/ContactUs";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useRef, useEffect } from "react";
+// ADDED IMPORT: BlackFridayCTA
+import BlackFridayCTA from "../components/BlackFridayCTA";
 
 function Home() {
   const homeRef = useRef(null);
@@ -96,6 +98,9 @@ function Home() {
 
       {/* 8. Footer */}
       <Footer />
+
+      {/* Black Friday CTA Flutuante */}
+      <BlackFridayCTA />
     </div>
   );
 }

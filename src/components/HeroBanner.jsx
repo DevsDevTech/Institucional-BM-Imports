@@ -1,4 +1,4 @@
-import { ArrowRight, ExternalLink, ChevronDown } from "lucide-react";
+import { ArrowRight, ExternalLink, ChevronDown, Percent } from "lucide-react";
 import { forwardRef, useState, useEffect } from "react";
 import heroBannerImage from "../assets/img/heroBanner.jfif";
 import fachadaImage from "../assets/img/fachada.jpg";
@@ -42,6 +42,10 @@ const HeroBanner = forwardRef(({ refs, onScroll }, ref) => {
           <h1 className="heading-display mb-8">
             BM Imports
           </h1>
+          <div className={`inline-flex items-center gap-2 bg-black/40 border border-white/20 rounded-full px-4 py-2 mb-6 backdrop-blur-sm transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <Percent size={18} className="text-red-400" />
+            <span className="text-sm text-white">Black Friday Week: Ofertas Exclusivas</span>
+          </div>
           <p className="text-2xl md:text-3xl lg:text-4xl font-light text-slate-200 mb-6 tracking-wide">
             Importadora & Distribuidora
           </p>
@@ -58,11 +62,11 @@ const HeroBanner = forwardRef(({ refs, onScroll }, ref) => {
           <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-1000 ease-out delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <button
               onClick={handleCatalogClick}
-              className="bg-red-500 hover:bg-red-600 text-white px-10 py-4 rounded-2xl font-semibold text-lg motion-premium hover:scale-105 flex items-center gap-3 shadow-premium group relative overflow-hidden"
+              className="bg-black/70 hover:bg-black text-white px-10 py-4 rounded-2xl font-semibold text-lg motion-premium hover:scale-105 flex items-center gap-3 shadow-premium group relative overflow-hidden border border-white/20"
             >
-              <span className="relative z-10">Conheça Nosso Catálogo</span>
-              <ExternalLink size={20} className="relative z-10 group-hover:rotate-12 transition-transform" />
-              <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <span className="relative z-10">Ofertas Black Friday</span>
+              <Percent size={20} className="relative z-10" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black to-red-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </button>
             
             <button
